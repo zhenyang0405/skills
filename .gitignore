@@ -1,0 +1,11 @@
+# Personal details: read by local agents through the symlinks, never committed
+*.private.md
+
+# OS / editor
+.DS_Store
+*.swp
+.idea/
+.vscode/
+
+# Python
+__pycache__/

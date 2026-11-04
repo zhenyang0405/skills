@@ -1,0 +1,21 @@
+{
+  "name": "zhenyang-skills",
+  "owner": {
+    "name": "zhenyang0405"
+  },
+  "metadata": {
+    "description": "Personal agent skills for engineering, AI engineering, startups and life.",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "core",
+      "description": "Always-on skills for any project: personal context, how to plan and clarify work, debugging, verification and handing work over between sessions.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/core/my-context"
+      ]
+    }
+  ]
+}

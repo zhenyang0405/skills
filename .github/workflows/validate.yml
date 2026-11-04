@@ -1,0 +1,23 @@
+name: Validate skills
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Marketplace is in sync
+        run: python3 scripts/skills.py sync-marketplace --check
+      - name: Skills are valid
+        run: python3 scripts/skills.py validate
+      - name: Shell scripts parse
+        run: bash -n scripts/install.sh && bash -n scripts/vendor.sh
