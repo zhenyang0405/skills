@@ -22,11 +22,26 @@ We do not install, vendor or call other people's skills. We study them, then wri
 - `.claude-plugin/marketplace.json` is generated. Do not edit `plugins` by hand. Run `python3 scripts/skills.py sync-marketplace`.
 - `profile/PROFILE.md` is the short always-on profile. Keep it under ~20 lines; detail goes in `skills/core/my-context`.
 
+## How every skill is made (the quality bar)
+
+Build and improve skills with the `skill-creator` skill (`anthropic-skills:skill-creator`), following its loop. A skill ships only when it measurably beats having no skill on its own test cases.
+
+1. **Ground it in the industry standard.** Before drafting, research current best practice from primary sources for that field (e.g. OWASP and NIST for security, Google SRE for operations, RFCs and official framework docs, established books and methods), not only other people's skills. Note them in `CREDITS.md` as "Grounded in".
+2. **Study 2–4 leading skills** with `scripts/fetch-reference.sh`, and write our own version (rules above).
+3. **Draft** from `templates/skill/` (writing rules below).
+4. **Write 2–3 realistic test cases** in the skill's `evals/<case-name>/` folder, in skill-creator's format (`prompt.md`, `case.yaml`, `graders/`, optional `files/` + `place-files.sh`). Prompts should read like real requests. Graders are objective, one statement per file. Include at least one case that tests the skill does *not* over-react (an honest or simple input).
+5. **Run each case with and without the skill** (subagents, in parallel). Results go in `.workspace/<skill-name>/iteration-<N>/`, which is gitignored and deliberately outside `skills/` so installers never pick it up.
+6. **Grade, benchmark and review with the user** using skill-creator's grader, `aggregate_benchmark` and eval viewer. Show the user the viewer *before* revising.
+7. **Improve and rerun** until the user is satisfied and the skill clearly beats the baseline. Generalize from failures; don't overfit to the test cases.
+8. Optionally, **tune the description** with skill-creator's description optimizer once the skill is stable.
+
 ## Writing a skill
 
 Start from `templates/skill/`.
 
-- **The description is the trigger.** Say what the skill does *and* when to use it, in the words a user would say. Max 1024 chars.
+- **The description is the trigger.** Say what the skill does *and* when to use it, in the words a user would say. Max 1024 chars. Agents tend to under-use skills, so be explicit about every situation where it applies, including ones where the user doesn't name it.
+- **Explain why, don't shout.** Give the reason behind each instruction so the agent can apply it to cases the skill didn't foresee. If you're writing ALWAYS or NEVER in capitals, try explaining the risk instead.
+- **Keep it lean.** Cut anything that doesn't change behavior. Read the test-run transcripts: if the skill makes the agent do busywork, remove what causes it. If every test run writes the same helper script, bundle it in `scripts/`.
 - **Process, not prose.** Give numbered steps with checkpoints and explicit "done when" exit criteria that require evidence (test output, a file, a link).
 - **Stay focused.** Keep `SKILL.md` under ~500 lines. Move long material to `references/` and link to it with a note on when to read it.
 - **Don't overlap.** Before adding a skill, check whether an existing one already covers it. Two skills giving conflicting instructions is worse than none.

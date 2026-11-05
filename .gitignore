@@ -12,3 +12,6 @@ __pycache__/
 
 # Other people's skills downloaded for study (scripts/fetch-reference.sh): never committed
 .reference/
+
+# Skill eval runs (skill-creator workspace): large, regenerated each iteration
+.workspace/

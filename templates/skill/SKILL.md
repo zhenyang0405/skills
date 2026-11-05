@@ -11,7 +11,8 @@ How to use this template
 3. Keep this file under ~500 lines. Put long checklists, examples and docs in references/
    and link to them, so they load only when needed.
 4. Delete any section you do not need, and delete this comment.
-5. Run: python3 scripts/skills.py sync-marketplace && python3 scripts/skills.py validate
+5. Write 2-3 test cases in evals/ (see evals/README.md) and test them with skill-creator.
+6. Run: python3 scripts/skills.py sync-marketplace && python3 scripts/skills.py validate
 -->
 
 # <Skill title>

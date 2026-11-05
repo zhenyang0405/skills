@@ -87,8 +87,9 @@ Each pack that contains at least one skill becomes a plugin (`core`, `engineerin
    cp -R templates/skill skills/engineering/tdd
    ```
    Take the ideas and structure, write the text yourself, tailor it with `my-context`, and cut anything you won't use.
-3. **Credit.** Add a row to [CREDITS.md](CREDITS.md).
-4. **Check.**
+3. **Credit.** Add a row to [CREDITS.md](CREDITS.md), including the industry sources it's grounded in.
+4. **Test.** Write 2–3 realistic test cases in the skill's `evals/` folder and run them with and without the skill using the `skill-creator` skill. A skill ships only when it clearly beats no skill. The full loop is in [AGENTS.md](AGENTS.md).
+5. **Check.**
    ```bash
    python3 scripts/skills.py sync-marketplace && python3 scripts/skills.py validate
    ```
