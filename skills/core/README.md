@@ -11,7 +11,12 @@ Keep this pack small. Every installed skill's description is loaded into every s
 | [my-context](my-context/SKILL.md) | ✅ | Who you are, your goals, stack and projects, for other skills to read |
 | [interview-me](interview-me/SKILL.md) | ✅ | One question at a time until intent is clear, then a confirmed brief. Covers builds, startup ideas and life decisions |
 
-## Planned: learn from these, then write our own
+## Planned
+
+- `verify-before-done`: the single definition of "done": evidence, not claims. Build first; every engineering skill ends with it ([roadmap](../../research/2026-11-software-engineering-skills-roadmap.md) #1)
+- `debugging`: reproduce, isolate, find the root cause, add a regression test (roadmap #14)
+
+## Learn from these, then write our own
 
 See the [research](../../research/2026-11-frontier-skills-landscape.md). Study with `scripts/fetch-reference.sh`; never install or copy them.
 
