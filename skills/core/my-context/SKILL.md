@@ -5,8 +5,8 @@ description: Background on the user - who they are, their goals, how they like t
 
 # My context
 
-Facts about the user that make answers fit them instead of a generic person. Read only the file
-the task needs:
+Facts about the user that make answers fit them instead of a generic person. A short summary is
+always loaded from the user's profile; this skill holds the detail. Read only the file the task needs:
 
 | File | Read when the task involves |
 |---|---|

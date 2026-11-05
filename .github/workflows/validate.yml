@@ -20,4 +20,4 @@ jobs:
       - name: Skills are valid
         run: python3 scripts/skills.py validate
       - name: Shell scripts parse
-        run: bash -n scripts/install.sh && bash -n scripts/vendor.sh
+        run: bash -n scripts/install.sh && bash -n scripts/fetch-reference.sh

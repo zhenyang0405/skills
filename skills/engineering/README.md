@@ -6,7 +6,9 @@ Software engineering workflows: specs and tickets, TDD, architecture, code revie
 
 _None yet._
 
-## Candidates (from the [research](../../research/2026-11-frontier-skills-landscape.md))
+## Planned: learn from these, then write our own
+
+See the [research](../../research/2026-11-frontier-skills-landscape.md). Study with `scripts/fetch-reference.sh`; never install or copy them.
 
 - `to-spec`, `to-tickets`, `tdd`, `improve-codebase-architecture`, `code-review`: [mattpocock/skills](https://github.com/mattpocock/skills)
 - `subagent-driven-development`, `using-git-worktrees`, `writing-plans`: [obra/superpowers](https://github.com/obra/superpowers)

@@ -23,6 +23,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 SKILLS_DIR = ROOT / "skills"
 MARKETPLACE = ROOT / ".claude-plugin" / "marketplace.json"
+# Skills are written here, never copied in; see CREDITS.md and scripts/fetch-reference.sh.
 
 # Limits from the Agent Skills spec (agentskills.io) plus repo conventions.
 NAME_RE = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
@@ -234,6 +235,19 @@ def validate_skill(s: Skill) -> None:
             s.errors.append(f"broken link to `{target}`")
 
 
+def credited_skills() -> set[str]:
+    """Skill names in the first column of the CREDITS.md table, written as `name`."""
+    credits = ROOT / "CREDITS.md"
+    if not credits.is_file():
+        return set()
+    names = set()
+    for line in credits.read_text(encoding="utf-8").splitlines():
+        m = re.match(r"^\|\s*`([a-z0-9-]+)`\s*\|", line)
+        if m:
+            names.add(m.group(1))
+    return names
+
+
 def cmd_validate() -> int:
     skills = load_skills()
     for s in skills:
@@ -248,6 +262,12 @@ def cmd_validate() -> int:
             where = ", ".join(g.rel for g in group)
             for g in group:
                 g.errors.append(f"duplicate skill name `{name}` ({where})")
+
+    # Every skill should say in CREDITS.md what it learned from (or `original`).
+    credited = credited_skills()
+    for s in skills:
+        if s.name not in credited:
+            s.warnings.append("no row in CREDITS.md (add what inspired it, or `original`)")
 
     # A SKILL.md directly in a pack folder would shadow the skills inside it for `npx skills`.
     stray = [p / "SKILL.md" for p in pack_dirs() if (p / "SKILL.md").exists()]

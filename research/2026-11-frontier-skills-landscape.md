@@ -143,6 +143,8 @@ Research into which agent skills are currently leading for **startup building**,
 
 ## 7. Recommendations for your repository
 
+> **Update (2026-11-05):** decided not to install or vendor any third-party skills. Every skill in the repo is written from scratch, learning from the repos below and credited in `CREDITS.md`. Read "adopt" and "vendor" in this section as "study and write our own version".
+
 ### 7.1 Suggested starter shortlist
 
 **Core (always on, any project)**

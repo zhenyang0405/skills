@@ -6,7 +6,9 @@ Building a company: idea validation, customer discovery, positioning, pricing, g
 
 _None yet._
 
-## Candidates (from the [research](../../research/2026-11-frontier-skills-landscape.md))
+## Planned: learn from these, then write our own
+
+See the [research](../../research/2026-11-frontier-skills-landscape.md). Study with `scripts/fetch-reference.sh`; never install or copy them.
 
 - YC-style idea interrogation (`/office-hours`, `/plan-ceo-review`): [garrytan/gstack](https://github.com/garrytan/gstack)
 - `identify-assumptions-new`, `opportunity-solution-tree`, `interview-script`, `lean-canvas`: [phuryn/pm-skills](https://github.com/phuryn/pm-skills)
@@ -15,4 +17,4 @@ _None yet._
 - `pitch-deck`, `investor-research`, `data-room`, `mvp-scoping`: [shawnpang/startup-founder-skills](https://github.com/shawnpang/startup-founder-skills)
 - Pitch-deck review, financial-model review, IC simulation: [lool-ventures/founder-skills](https://github.com/lool-ventures/founder-skills)
 
-Founder skills are the least mature area. Expect to write or heavily adapt your own here.
+Founder skills are the least mature area, so there is the most room to do better than the originals here.
