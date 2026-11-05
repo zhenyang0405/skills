@@ -15,7 +15,8 @@
       "strict": false,
       "skills": [
         "./skills/core/interview-me",
-        "./skills/core/my-context"
+        "./skills/core/my-context",
+        "./skills/core/verify-before-done"
       ]
     }
   ]

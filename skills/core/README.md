@@ -9,11 +9,11 @@ Keep this pack small. Every installed skill's description is loaded into every s
 | Skill | Status | What it does |
 |---|---|---|
 | [my-context](my-context/SKILL.md) | ✅ | Who you are, your goals, stack and projects, for other skills to read |
+| [verify-before-done](verify-before-done/SKILL.md) | ✅ | Proves work is done before saying so: real checks, behavior, diff audit for gamed tests, requirements, evidence report |
 | [interview-me](interview-me/SKILL.md) | ✅ | One question at a time until intent is clear, then a confirmed brief. Covers builds, startup ideas and life decisions |
 
 ## Planned
 
-- `verify-before-done`: the single definition of "done": evidence, not claims. Build first; every engineering skill ends with it ([roadmap](../../research/2026-11-software-engineering-skills-roadmap.md) #1)
 - `debugging`: reproduce, isolate, find the root cause, add a regression test (roadmap #14)
 
 ## Learn from these, then write our own
@@ -23,6 +23,6 @@ See the [research](../../research/2026-11-frontier-skills-landscape.md). Study w
 Several of these cover the same ground (e.g. three versions of "interview me first"). Write **one** skill per job, combining the best ideas.
 
 - `handoff` / `research`: [mattpocock/skills](https://github.com/mattpocock/skills)
-- `verification-before-completion`, `systematic-debugging`: [obra/superpowers](https://github.com/obra/superpowers)
+- `systematic-debugging`: [obra/superpowers](https://github.com/obra/superpowers)
 - `doubt-driven-development`: [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills)
 - `skill-creator` (write and test new skills): [anthropics/skills](https://github.com/anthropics/skills)
