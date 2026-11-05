@@ -4,7 +4,7 @@
     "name": "zhenyang0405"
   },
   "metadata": {
-    "description": "Personal agent skills for engineering, AI engineering, startups and life.",
+    "description": "Personal agent skills for engineering, AI engineering, startups, content creation and life.",
     "version": "0.1.0"
   },
   "plugins": [
@@ -16,6 +16,18 @@
       "skills": [
         "./skills/core/interview-me",
         "./skills/core/my-context"
+      ]
+    },
+    {
+      "name": "content",
+      "description": "Making content as a tech/AI creator, starting from zero: choosing a specific angle and audience, finding video ideas with evidence, writing scripts for YouTube, Shorts, TikTok and Instagram Reels, and learning from the numbers after posting.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/content/content-ideas",
+        "./skills/content/content-retro",
+        "./skills/content/content-strategy",
+        "./skills/content/video-script"
       ]
     }
   ]

@@ -1,6 +1,6 @@
 # Skills
 
-My personal library of [Agent Skills](https://agentskills.io) for software engineering, AI engineering, startups and personal life. Every skill is a folder with a `SKILL.md`, so the same repo works with Claude Code, Codex, Cursor, Gemini CLI, GitHub Copilot, OpenCode and other agents that support the standard.
+My personal library of [Agent Skills](https://agentskills.io) for software engineering, AI engineering, startups, content creation and personal life. Every skill is a folder with a `SKILL.md`, so the same repo works with Claude Code, Codex, Cursor, Gemini CLI, GitHub Copilot, OpenCode and other agents that support the standard.
 
 **Every skill here is my own.** I study the best open-source skills, then write my own version that fits me and doesn't overlap with anything else in the repo. Nothing is installed from or delegated to other people's skills. What each skill learned from is credited in [CREDITS.md](CREDITS.md).
 
@@ -13,6 +13,7 @@ skills/
   engineering/       specs, TDD, architecture, review, security, shipping
   ai-engineering/    context engineering, agents, evals, RAG, fine-tuning
   startup/           validation, discovery, positioning, GTM, fundraising
+  content/           creator strategy, video ideas, scripts, learning from analytics
   personal/          learning, writing, finance, career, life admin
     <pack>/README.md            what the pack covers + skills to learn from
     <pack>/<skill>/SKILL.md     one skill per folder

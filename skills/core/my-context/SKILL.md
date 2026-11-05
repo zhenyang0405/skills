@@ -1,6 +1,6 @@
 ---
 name: my-context
-description: Background on the user - who they are, their goals, how they like to work, their preferred tech stack, and their current projects and startup ideas. Use when tailoring advice, plans, code choices or writing to the user, or when another skill needs user, stack or startup context.
+description: Background on the user - who they are, their goals, how they like to work, their preferred tech stack, their current projects and startup ideas, and their content-creator profile (niche, audience, platforms, voice). Use when tailoring advice, plans, code choices or writing to the user, or when another skill needs user, stack, startup or creator context.
 ---
 
 # My context
@@ -14,6 +14,7 @@ always loaded from the user's profile; this skill holds the detail. Read only th
 | [references/goals.md](references/goals.md) | Prioritizing, planning, or career, life or startup decisions |
 | [references/stack.md](references/stack.md) | Choosing languages, frameworks, tools, cloud or infrastructure |
 | [references/projects.md](references/projects.md) | Their current projects, startup ideas and what stage each is at |
+| [references/creator.md](references/creator.md) | Making content: their niche, audience, pillars, platforms, cadence and on-camera voice |
 
 ## Rules
 

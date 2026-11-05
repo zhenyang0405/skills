@@ -31,13 +31,13 @@ NAME_MAX = 64
 DESCRIPTION_MAX = 1024
 BODY_LINES_WARN = 500
 # Pack order in the marketplace; packs not listed here are appended alphabetically.
-PACK_ORDER = ["core", "engineering", "ai-engineering", "startup", "personal"]
+PACK_ORDER = ["core", "engineering", "ai-engineering", "startup", "content", "personal"]
 
 DEFAULT_MARKETPLACE_HEADER = {
     "name": "zhenyang-skills",
     "owner": {"name": "zhenyang0405"},
     "metadata": {
-        "description": "Personal agent skills for engineering, AI engineering, startups and life.",
+        "description": "Personal agent skills for engineering, AI engineering, startups, content creation and life.",
         "version": "0.1.0",
     },
 }

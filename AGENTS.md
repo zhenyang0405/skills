@@ -14,7 +14,7 @@ We do not install, vendor or call other people's skills. We study them, then wri
 
 ## Structure
 
-- One skill per folder: `skills/<pack>/<skill-name>/SKILL.md`. Packs: `core`, `engineering`, `ai-engineering`, `startup`, `personal`.
+- One skill per folder: `skills/<pack>/<skill-name>/SKILL.md`. Packs: `core`, `engineering`, `ai-engineering`, `startup`, `content`, `personal`.
 - The folder name must equal the frontmatter `name`: lowercase letters, digits and single hyphens, max 64 chars.
 - Skill names must be unique across all packs, because installs flatten packs into one folder.
 - Never put a `SKILL.md` directly in a pack folder; it would hide the skills inside it. Packs use `README.md`.
