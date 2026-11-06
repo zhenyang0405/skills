@@ -123,7 +123,10 @@ reading it carefully against the list below is enough. For larger diffs, also ru
 - The code under test mocked away in its own test
 - Errors swallowed (`catch {}`, bare `except: pass`) to stop a failure from surfacing
 - Secrets, debug prints, `console.log`, TODOs or temporary files left in
-- Files changed outside the task's scope
+- Files changed outside the task's scope, and behavior changed outside it even inside a touched file
+  (e.g. a shared helper "fixed" so other features now give different results). Even a good change
+  carries risk the user didn't agree to, especially just before a release. Revert it, or keep it
+  only if the user approves, and list it in the report as a separate decision
 
 Each finding must either be fixed or be explained in the report with a reason the user can judge.
 Weakening a test, check or config to get green hides the very failure the user needs to know about,

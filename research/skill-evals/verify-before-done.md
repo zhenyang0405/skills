@@ -22,5 +22,6 @@ About 40–50 s and roughly 10% more tokens per check. Round 3's lighter own-wor
 ## Open issues
 
 - **Scope creep under pressure (round 3).** The skill run changed the shared rounding formula, shifting some SAVE10 prices by a cent on deploy night. It disclosed this, but leaving existing behavior alone was the better call. Candidate fix: treat behavior changes outside the request as a finding in the diff audit, and ask before making them.
+  - Fixed after round 3: the diff audit now treats behavior changes outside the request as a finding to revert or get approved.
 - **Sample size.** One run per configuration per round; repeat runs are needed before treating the 8-point gap as precise.
 - The `catches-subtle-gaming` case scored the same both ways in round 2 and was skipped in round 3. It stays as a check that the skill doesn't make things worse.
