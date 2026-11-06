@@ -1,6 +1,6 @@
 ---
 name: verify-before-done
-description: Prove work is finished before saying so. Run the project's own checks fresh, test the actual behavior, audit the diff for weakened or gamed tests, check every requirement, and report the status with evidence. Use before saying a task is done, fixed, working or passing; before committing, pushing or opening a PR; when moving to the next task; and when a subagent or another agent reports success.
+description: Prove work is finished before saying so. Run the project's own checks fresh, test the actual behavior, audit the diff for weakened or gamed tests, check every requirement, and report the status with evidence. Use before saying a task is done, fixed, working or passing; before committing, pushing, merging or opening a PR; when moving to the next task; and whenever a subagent, coding agent or teammate reports success. Also use when the user asks to double-check, sanity-check or review someone's work, or asks "is it actually done?", "can I merge this?" or "is this ready to push?", even if they don't say "verify".
 ---
 
 # Verify before done
@@ -22,7 +22,8 @@ Scale the effort to the change (see the table in Step 3), but never skip the rep
 
 ## Step 1: Find the real checks
 
-Use the checks the project declares. Never invent your own and call them "the tests".
+Use the checks the project declares, because those are what CI and reviewers will run. Ad-hoc commands
+can pass while the real suite fails, so don't present your own as "the tests".
 
 - Look in this order: CI config (`.github/workflows/`, `.gitlab-ci.yml`), task runners (`package.json`
   scripts, `Makefile`, `justfile`, `pyproject.toml`, `Cargo.toml`), then the README or contributing guide.
@@ -50,6 +51,12 @@ it failed there.
   (`git worktree add <tmp-dir> <base>`), so the tree under review is never touched.
 - A test you didn't touch that breaks after the change is a bug in the change.
 
+**The target.** If the work will be merged into a branch that has moved on since the base (`git log
+<base>..<target>` isn't empty), check what the merge would produce without touching anything:
+`git merge-tree --write-tree <target> HEAD`. A clean branch can still conflict, or auto-merge into
+something broken (e.g. keep a test the target skipped). Say so in the report, and don't describe the
+change as fixing the target unless the merge result shows it.
+
 ## Step 3: Run everything fresh and read the output
 
 Run the full checks after the last edit. Then read the output, not just the last line:
@@ -64,8 +71,10 @@ written down, derive one from the requirements: the main case plus an edge case 
 a different value from the ones the tests use). Say that you chose them. For a small pure function,
 running it directly on those inputs is enough.
 
-For the revert check on a bug fix, never edit the tree under review: put the base's source next to
-the new tests in a separate worktree or temp copy, and run the tests there.
+A bug fix needs a revert check: a regression test only proves something if it fails without the fix.
+Do it without editing the tree under review, so you can't leave it in a changed state: put the
+base's source next to the new tests in a separate worktree or temp copy, and run the tests there.
+New features don't need one; their new tests just have to pass and actually exercise the feature.
 
 | Claim | Evidence required | Not enough |
 |---|---|---|
@@ -90,6 +99,11 @@ reading it carefully against the list below is enough. For larger diffs, also ru
 [references/integrity-audit.md](references/integrity-audit.md). The usual suspects:
 
 - Tests skipped, deleted, or made weaker (assertions removed, expectations changed to match buggy output)
+- New tests too loose to fail when the code is wrong (`assert.ok(x < 100)` where the requirement
+  says exactly 50; `toBeDefined()`; checking only that no error was thrown)
+- The test command or config narrowed so some tests no longer run (a changed `test` script, glob,
+  `testPathIgnorePatterns`, a file renamed out of the pattern). Run the runner's default discovery
+  too, and compare the test files it finds with the base
 - `.only`, `skip`, `xfail` or `@Disabled` added; snapshot files regenerated without a stated reason
 - Lint, type or coverage settings loosened; `// @ts-ignore`, `eslint-disable`, `# type: ignore`, `any` added
 - Special cases that match test inputs exactly (hardcoded answers)
@@ -99,8 +113,9 @@ reading it carefully against the list below is enough. For larger diffs, also ru
 - Files changed outside the task's scope
 
 Each finding must either be fixed or be explained in the report with a reason the user can judge.
-Never weaken a test, check or config to get green. If a test is truly wrong, say so and why, and
-change it only with that explanation in the report.
+Weakening a test, check or config to get green hides the very failure the user needs to know about,
+so don't. If a test is truly wrong, say so and why, and change it only with that explanation in
+the report.
 
 ## Step 5: Check every requirement
 
