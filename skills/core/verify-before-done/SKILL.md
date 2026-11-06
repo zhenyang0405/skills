@@ -126,7 +126,9 @@ reading it carefully against the list below is enough. For larger diffs, also ru
 - Files changed outside the task's scope, and behavior changed outside it even inside a touched file
   (e.g. a shared helper "fixed" so other features now give different results). Even a good change
   carries risk the user didn't agree to, especially just before a release. Revert it, or keep it
-  only if the user approves, and list it in the report as a separate decision
+  only if the user approves, and list it in the report as a separate decision. One exception: a fix
+  for a security hole on the same resource the task touched (see `auth-and-access`) stays, provided
+  it has a test that fails on the old code and the report lists it separately
 
 Each finding must either be fixed or be explained in the report with a reason the user can judge.
 Weakening a test, check or config to get green hides the very failure the user needs to know about,

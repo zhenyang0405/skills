@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: admin-filter-on-list
+expected_outcome: |
+  Search only ever returns the caller's own notes. The ?userId= filter works for admins (carol) and is refused or ignored for everyone else, so bob can't list alice's notes with it. Tests cover a non-admin using ?userId=. The existing GET /notes/:id hole on the same resource (any user can read any note) is fixed with a test and listed in the reply.
+context:
+  scaffold_script: place-files.sh

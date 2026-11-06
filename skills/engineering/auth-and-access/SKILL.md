@@ -81,14 +81,25 @@ recurring mistakes to check for:
    never password hashes, tokens, or other users' private data.
 6. **The places people forget:** list and search endpoints, counts, exports, file downloads and
    signed URLs, WebSocket messages, GraphQL resolvers, webhooks, background jobs and admin tools.
-   Each follows the same table.
+   Each follows the same table. **Query parameters that choose whose data to return** (`?userId=`,
+   `?tenantId=`, `?include=all`) are authorization decisions: check the caller may use them, and
+   otherwise ignore them or refuse.
+   **Server actions and RPC-style functions** (Next.js `'use server'`, tRPC, Firebase callable functions)
+   are public endpoints. Each one checks the session and ownership itself, even if middleware or the
+   page already did.
+   **The authentication you build on:** before relying on an existing "current user" helper, check it
+   actually verifies the session or token (signature, expiry) instead of just reading it. A new
+   endpoint is only as safe as that helper.
 7. **In the database too, when clients talk to it directly.** With Supabase, Postgres exposed through
    an API, or Firebase, the database rules *are* the access control: enable row-level security on every
    table clients can reach, write a policy per action, and keep service or admin keys on the server
    only. See [references/stacks.md](references/stacks.md).
 8. **Look at the neighbors.** When you touch one endpoint or table, check the others for the same
-   resource use the same rule. If one doesn't (e.g. a GET that skips the ownership check your new PATCH
-   has), report it. Fix it if it's in scope; otherwise flag it clearly as a separate security issue.
+   resource use the same rule.
+   - **Same resource** (e.g. a GET that skips the ownership check your new PATCH has): fix it in this
+     change, because leaving a known hole open while you ask is worse. Add a test that fails on the old
+     code, and list it in the report as a separate fix so the user can review it.
+   - **Other resources**: don't change them. Flag each one in the report with its risk in one line.
 
 ## Step 4: Prove it with forbidden-case tests
 
@@ -103,8 +114,10 @@ added or changed, write tests for who is **refused**, not just who is allowed. S
 - **The owner** → allowed (the one test everyone already writes).
 - **Row-level security:** query as anonymous and as a second user, and check they get nothing.
 
-A change to access control without a forbidden-case test isn't finished. Finish with
-`verify-before-done`.
+A change to access control without a forbidden-case test isn't finished. Write the tests so the
+project's own test command or CI runs them, and run what you can. Don't install or start extra
+infrastructure (a local database, an emulator) just for this unless the project already uses it;
+say instead what you couldn't run. Finish with `verify-before-done`.
 
 ## Report
 
