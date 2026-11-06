@@ -7,7 +7,7 @@ Software engineering workflows for building production-ready applications: specs
 | Skill | Status | What it does |
 |---|---|---|
 | [spec-and-plan](spec-and-plan/SKILL.md) | ✅ | Testable requirements with Given/When/Then examples, then small end-to-end slices that trace to them |
-| [auth-and-access](auth-and-access/SKILL.md) | ✅ | Who may do what, enforced on the server for every record, action and field, and proved with tests of who is refused |
+| [auth-and-access](auth-and-access/SKILL.md) | 🧪 in testing (round 1 tied the baseline) | Who may do what, enforced on the server for every record, action and field, and proved with tests of who is refused |
 
 ## Build order
 
