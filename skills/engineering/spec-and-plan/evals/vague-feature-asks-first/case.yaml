@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: vague-feature-asks-first
+expected_outcome: |
+  The agent doesn't write a spec built on guesses. It notes that who the program is for, why, and what success looks like are unknown, and asks about them (or recommends clarifying them first) before writing requirements. No code or spec file of assumed requirements is created.
+context:
+  scaffold_script: place-files.sh

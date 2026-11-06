@@ -4,7 +4,9 @@ Software engineering workflows for building production-ready applications: specs
 
 ## Skills
 
-_None yet._
+| Skill | Status | What it does |
+|---|---|---|
+| [spec-and-plan](spec-and-plan/SKILL.md) | ✅ | Testable requirements with Given/When/Then examples, then small end-to-end slices that trace to them |
 
 ## Build order
 

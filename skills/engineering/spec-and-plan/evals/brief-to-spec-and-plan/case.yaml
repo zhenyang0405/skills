@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: brief-to-spec-and-plan
+expected_outcome: |
+  A spec and plan are saved as a file in the repo, and no source or test code is changed. Requirements are numbered and testable and cover the unwanted cases (expired code, limit reached, unknown code, missing or malformed email, the end-date boundary in Europe/London). Each has a Given/When/Then example with concrete dates and counts. The plan has vertical slices that each name the requirements they cover and how to verify them, every requirement is covered, out of scope is stated, and the reply stops to ask for approval.
+context:
+  scaffold_script: place-files.sh

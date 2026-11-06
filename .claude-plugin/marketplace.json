@@ -18,6 +18,15 @@
         "./skills/core/my-context",
         "./skills/core/verify-before-done"
       ]
+    },
+    {
+      "name": "engineering",
+      "description": "Software engineering workflows for building production-ready applications: specs, security, data safety, testing, architecture, review, release and operations.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/engineering/spec-and-plan"
+      ]
     }
   ]
 }
