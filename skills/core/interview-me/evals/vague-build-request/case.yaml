@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: vague-build-request
+expected_outcome: |
+  The reply doesn't build anything yet. It gives its current read of what the user wants with a confidence level, then asks one open question about why the user wants a dashboard or what they'd use it for, and says why it's asking.

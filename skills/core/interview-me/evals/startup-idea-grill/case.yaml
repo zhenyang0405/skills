@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: startup-idea-grill
+expected_outcome: |
+  The reply diagnoses rather than encourages. It gives its read and confidence, then asks one question that pushes for a specific customer (a real kind of business, ideally a real person) instead of discussing features, technology or market size, and says why it matters.

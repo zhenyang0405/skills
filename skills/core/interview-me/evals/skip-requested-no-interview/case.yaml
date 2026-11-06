@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: skip-requested-no-interview
+expected_outcome: |
+  The agent makes the page without interviewing: it writes a single self-contained index.html for Crumb & Co, and its reply lists the assumptions it made (e.g. hours, location, menu items) so the user can correct them.

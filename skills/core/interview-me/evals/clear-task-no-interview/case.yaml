@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: clear-task-no-interview
+expected_outcome: |
+  The agent just does the task: it writes fib.py with a correct iterative function and doctests, without interviewing the user or asking clarifying questions first.
