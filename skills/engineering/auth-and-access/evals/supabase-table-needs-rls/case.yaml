@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: supabase-table-needs-rls
+expected_outcome: |
+  A new migration creates public.profiles with row-level security enabled and policies that let users read and write only their own row (with check on writes). The client helpers use only the anon-key client. The reply points out that the existing todos table has no row-level security, so anyone with the public key can read and change every user's todos, and either fixes it in a migration or flags it as urgent.
+context:
+  scaffold_script: place-files.sh

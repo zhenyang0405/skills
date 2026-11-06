@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: edit-endpoint-with-idor-nearby
+expected_outcome: |
+  PATCH /notes/:id lets the owner change the body, refuses anonymous callers (401) and other users (404 or 403) without changing the note, and ignores attempts to change ownerId. Tests cover the refused cases. The reply reports that the existing GET /notes/:id lets any logged-in user read anyone's note, and either fixes it or flags it.
+context:
+  scaffold_script: place-files.sh

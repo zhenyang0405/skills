@@ -25,6 +25,7 @@
       "source": "./",
       "strict": false,
       "skills": [
+        "./skills/engineering/auth-and-access",
         "./skills/engineering/spec-and-plan"
       ]
     }

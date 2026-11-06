@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: public-health-endpoint
+expected_outcome: |
+  GET /health returns 200 with {"status":"ok"} without needing a token. The change is small and doesn't add authentication to the health check or alter other routes.
+context:
+  scaffold_script: place-files.sh
