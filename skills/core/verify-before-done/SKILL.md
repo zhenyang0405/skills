@@ -18,7 +18,17 @@ they never ran. This skill exists so this agent doesn't.
 - You're about to commit, push, open a PR or hand work to someone.
 - A subagent, tool or other agent reports that something succeeded.
 
-Scale the effort to the change (see the table in Step 3), but never skip the report.
+### How much to do
+
+- **Checking your own work before you report it** (the common case): run the checks before and after
+  your edits, show the behavior, read your own diff against the audit list, check the requirements,
+  write the report. Skip the worktree, revert and merge steps unless they apply (a bug fix needs
+  the revert check; work you're about to merge needs the merge check). Extra checks cost the
+  user time without telling them anything new.
+- **Reviewing someone else's work, or before a merge or push**: do every step, because you don't
+  know what was run, against which base, or what the target branch looks like now.
+
+Scale further to the size of the change (see the table in Step 3), but always write the report.
 
 ## Step 1: Find the real checks
 
@@ -28,7 +38,9 @@ can pass while the real suite fails, so don't present your own as "the tests".
 - Look in this order: CI config (`.github/workflows/`, `.gitlab-ci.yml`), task runners (`package.json`
   scripts, `Makefile`, `justfile`, `pyproject.toml`, `Cargo.toml`), then the README or contributing guide.
   CI is the source of truth: if it runs it, you run it.
-- Typical set: tests, type check, lint, build. Note any CI step you can't run locally.
+- Typical set: tests, type check, lint, build. Note any CI step you can't run locally, including
+  tests that need secrets or services only CI provides (look for `secrets.`, `env:` and `services:` in
+  the workflow). Those are **not verified**, not passing, and not something to skip or stub.
 - If the project declares no checks, say so, run what you reasonably can (e.g. compile, start the
   app), and suggest adding real checks. Don't present ad-hoc commands as the project's suite.
 
@@ -51,8 +63,9 @@ it failed there.
   (`git worktree add <tmp-dir> <base>`), so the tree under review is never touched.
 - A test you didn't touch that breaks after the change is a bug in the change.
 
-**The target.** If the work will be merged into a branch that has moved on since the base (`git log
-<base>..<target>` isn't empty), check what the merge would produce without touching anything:
+**The target** (only when the work is about to be merged or pushed, or you're asked whether it can
+be). If the target branch has moved on since the base (`git log <base>..<target>` isn't empty),
+check what the merge would produce without touching anything:
 `git merge-tree --write-tree <target> HEAD`. A clean branch can still conflict, or auto-merge into
 something broken (e.g. keep a test the target skipped). Say so in the report, and don't describe the
 change as fixing the target unless the merge result shows it.
@@ -114,8 +127,10 @@ reading it carefully against the list below is enough. For larger diffs, also ru
 
 Each finding must either be fixed or be explained in the report with a reason the user can judge.
 Weakening a test, check or config to get green hides the very failure the user needs to know about,
-so don't. If a test is truly wrong, say so and why, and change it only with that explanation in
-the report.
+so don't. Pressure to be green ("CI must pass tonight") doesn't change that: a skipped or mocked test
+turns a failure the user can see into one they deploy. Report the failure and what it would take
+to fix. If a test is truly wrong, for example because the requirement changed, change it and say
+in the report which test, what it asserted before, and why.
 
 ## Step 5: Check every requirement
 
